@@ -65,12 +65,14 @@
     background:linear-gradient(90deg,rgba(125,255,203,.55),rgba(125,255,203,.28) 45%,rgba(125,255,203,0));
     filter:blur(4px);border-radius:4px;z-index:-1;
   }
-  h1{
+  .beyond{margin:0}
+  .beyond img{display:block;width:118%;max-width:none;margin-left:10.4%;height:auto}
+  h1.old{
     font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:900;
     font-size:clamp(68px,22vw,104px);line-height:1;letter-spacing:-.02em;color:var(--mint);
     text-shadow:0 0 18px rgba(125,255,203,.55),-6px 0 14px rgba(125,255,203,.35);
   }
-  .sub{margin-top:10px;font-size:19px;font-weight:700;letter-spacing:-.01em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
+  .sub{margin-top:4px;font-size:19px;font-weight:700;letter-spacing:-.01em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
   .verse{margin-top:14px;font-size:12.5px;line-height:1.65;font-weight:400;opacity:.95;text-shadow:0 1px 8px rgba(0,0,0,.28);word-break:keep-all}
   .verse b{display:block;margin-top:4px;font-weight:500;opacity:.85}
 
@@ -151,11 +153,7 @@
 
 <main>
   <section class="hero">
-    <div class="term">CH PLUS · ONE TERM</div>
-    <div class="title-wrap">
-      <span class="streak"></span>
-      <h1>Beyond</h1>
-    </div>
+    <h1 class="beyond"><img src="assets/logo-beyond.png" alt="Beyond"></h1>
     <div class="sub">한텀의 기대를 적어주세요</div>
     <p class="verse">
       우리 안에서 역사하시는 능력을 따라<br>우리가 구하고 생각하는 모든 것보다<br>훨씬 더 넘치도록 하실 수 있는 분에게
@@ -192,8 +190,7 @@
   </section>
 
   <footer>
-    <span class="logo">CHPLUS+</span>
-    <span class="tag">CHANGING <b>HEART</b><br>CHANGING <b>HISTORY</b></span>
+    <img src="assets/logo-chplus.png" alt="CHPLUS+ Changing Heart Changing History" style="width:200px;height:auto">
   </footer>
 </main>
 
