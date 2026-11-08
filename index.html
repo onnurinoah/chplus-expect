@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>CH PLUS 한텀의 기대</title>
+<meta name="theme-color" content="#a7a597">
+<meta property="og:title" content="CH PLUS 한텀의 기대">
+<meta property="og:description" content="이번 텀, 하나님께 거는 기대를 적어주세요">
+<meta property="og:image" content="assets/bg-mobile.jpg">
+<link rel="preload" as="image" href="assets/bg-mobile.jpg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mint:#7dffcb;
+    --mint-deep:#3fd9a4;
+    --ink:#2f3a33;
+    --cream:#f4efe6;
+    --glass:rgba(250,247,240,.30);
+    --glass-line:rgba(255,255,255,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%;overflow-x:hidden}
+  body{
+    font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    color:#fff;background:#a9a99a;min-height:100dvh;overflow-x:hidden;
+  }
+
+  /* ---------- 배경 : 백월 이미지 변형 ---------- */
+  .bg{
+    position:fixed;inset:0;z-index:0;
+    background:#a7a597 url("assets/bg-mobile.jpg") center/cover no-repeat;
+  }
+  @media (min-aspect-ratio:4/5){
+    .bg{background-image:url("assets/bg-desktop.jpg")}
+  }
+  .shade{ /* 글씨 가독성용 아주 옅은 그림자 */
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(60,62,70,.18),rgba(60,62,70,0) 35%,rgba(50,60,40,0) 70%,rgba(40,50,30,.22));
+  }
+
+  /* ---------- 새 ---------- */
+  .birds{position:fixed;inset:0;z-index:2;pointer-events:none}
+  .bird{position:absolute;opacity:.92}
+  .bird.solid{filter:drop-shadow(30px 0 14px rgba(255,248,235,.25))}
+  @keyframes drift{0%,100%{transform:translate(0,0) rotate(var(--r,0deg))}50%{transform:translate(6px,-8px) rotate(var(--r,0deg))}}
+  .bird{animation:drift 7s ease-in-out infinite}
+  .bird:nth-child(2n){animation-duration:9s}
+  .bird:nth-child(3n){animation-duration:11s}
+
+  /* ---------- 레이아웃 ---------- */
+  main{
+    position:relative;z-index:3;min-height:100dvh;
+    display:flex;flex-direction:column;align-items:center;
+    padding:max(48px,env(safe-area-inset-top)) 20px max(28px,env(safe-area-inset-bottom));
+    max-width:520px;margin:0 auto;
+  }
+  .hero{text-align:center;margin:18px 0 22px;position:relative;width:100%}
+  .term{font-size:12px;letter-spacing:.32em;font-weight:600;opacity:.85;text-shadow:0 1px 8px rgba(0,0,0,.18)}
+  .title-wrap{position:relative;display:inline-block;margin-top:6px}
+  .streak{
+    position:absolute;left:40%;right:-30px;top:22%;height:58%;
+    background:linear-gradient(90deg,rgba(125,255,203,.55),rgba(125,255,203,.28) 45%,rgba(125,255,203,0));
+    filter:blur(4px);border-radius:4px;z-index:-1;
+  }
+  h1{
+    font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:900;
+    font-size:clamp(68px,22vw,104px);line-height:1;letter-spacing:-.02em;color:var(--mint);
+    text-shadow:0 0 18px rgba(125,255,203,.55),-6px 0 14px rgba(125,255,203,.35);
+  }
+  .sub{margin-top:10px;font-size:19px;font-weight:700;letter-spacing:-.01em;text-shadow:0 1px 10px rgba(0,0,0,.2)}
+  .verse{margin-top:14px;font-size:12.5px;line-height:1.65;font-weight:400;opacity:.95;text-shadow:0 1px 8px rgba(0,0,0,.28);word-break:keep-all}
+  .verse b{display:block;margin-top:4px;font-weight:500;opacity:.85}
+
+  /* ---------- 카드 ---------- */
+  .card{
+    width:100%;background:var(--glass);border:1px solid var(--glass-line);border-radius:22px;
+    padding:22px 18px 18px;backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+    box-shadow:0 12px 40px rgba(40,50,35,.18);
+  }
+  label{display:block;font-size:14px;font-weight:700;margin:0 0 8px 2px;text-shadow:0 1px 6px rgba(0,0,0,.18)}
+  .field+.field{margin-top:18px}
+  input,textarea{
+    width:100%;font:inherit;font-size:16px;color:var(--ink);
+    background:rgba(255,255,255,.82);border:1.5px solid transparent;border-radius:14px;
+    padding:14px 15px;outline:none;transition:border-color .2s,box-shadow .2s,background .2s;
+  }
+  textarea{min-height:170px;resize:none;line-height:1.6}
+  input::placeholder,textarea::placeholder{color:#8a918b}
+  input:focus,textarea:focus{background:#fff;border-color:var(--mint-deep);box-shadow:0 0 0 4px rgba(125,255,203,.35)}
+  .count{text-align:right;font-size:12px;margin-top:6px;opacity:.85}
+  .hint{font-size:12.5px;margin:-2px 0 8px 2px;opacity:.9;line-height:1.5;word-break:keep-all}
+
+  button{
+    width:100%;margin-top:20px;border:0;border-radius:16px;padding:16px;
+    font:inherit;font-size:17px;font-weight:800;color:#163a2c;
+    background:linear-gradient(180deg,#9bffd8,var(--mint));
+    box-shadow:0 6px 20px rgba(63,217,164,.45),inset 0 1px 0 rgba(255,255,255,.7);
+    transition:transform .1s,opacity .2s;cursor:pointer;
+  }
+  button:active{transform:scale(.98)}
+  button:disabled{opacity:.6}
+  .ghost{background:rgba(255,255,255,.35);color:#fff;box-shadow:none;border:1px solid var(--glass-line);font-weight:700}
+  .error{display:none;margin-top:12px;font-size:13.5px;background:rgba(160,40,50,.55);padding:10px 12px;border-radius:12px}
+
+  /* ---------- 완료 화면 ---------- */
+  .done{display:none;text-align:center}
+  .done .check{
+    width:58px;height:58px;margin:4px auto 14px;border-radius:50%;
+    background:var(--mint);display:grid;place-items:center;box-shadow:0 0 24px rgba(125,255,203,.7);
+  }
+  .done h2{font-size:21px;font-weight:800;margin-bottom:6px}
+  .done p{font-size:14px;opacity:.92;line-height:1.6;word-break:keep-all}
+  .quote{
+    margin:18px 0 4px;text-align:left;background:rgba(255,255,255,.82);color:var(--ink);
+    border-radius:16px;padding:16px;font-size:15px;line-height:1.7;white-space:pre-wrap;word-break:keep-all;
+  }
+  .quote small{display:block;margin-top:10px;font-weight:700;color:#3a8f6f}
+
+  footer{margin-top:auto;padding-top:28px;display:flex;align-items:center;gap:8px;opacity:.92}
+  .logo{font-weight:900;font-size:17px;letter-spacing:.01em;color:var(--cream)}
+  .tag{font-size:7.5px;line-height:1.35;letter-spacing:.18em;color:var(--cream)}
+  .tag b{font-weight:800}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="shade"></div>
+
+<!-- 새 실루엣 -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse">
+      <rect width="7" height="7" fill="rgba(255,255,255,.15)"/>
+      <path d="M1 1L6 6M6 1L1 6" stroke="rgba(255,255,255,.9)" stroke-width="1"/>
+    </pattern>
+    <symbol id="dove" viewBox="0 0 100 64">
+      <path d="M2 34C14 29 25 30 35 34C38 22 44 11 58 2C57 13 55 23 50 34C58 31 66 31 72 34C80 31 89 31 98 35C90 37 82 38 76 40C70 48 58 52 46 50C40 56 32 60 25 63C29 55 33 49 36 45C25 43 13 39 2 34Z"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="birds" aria-hidden="true">
+  <svg class="bird" style="left:4%;top:1.5%;width:64px;--r:-14deg" viewBox="0 0 100 64"><use href="#dove" fill="url(#hatch)"/></svg>
+  <svg class="bird solid" style="right:4%;top:2.5%;width:58px;--r:8deg" viewBox="0 0 100 64"><use href="#dove" fill="rgba(240,232,215,.85)"/></svg>
+  <svg class="bird" style="left:-2%;top:62%;width:46px;--r:-6deg" viewBox="0 0 100 64"><use href="#dove" fill="url(#hatch)"/></svg>
+  <svg class="bird solid" style="right:-1%;top:76%;width:56px;--r:-10deg" viewBox="0 0 100 64"><use href="#dove" fill="rgba(240,232,215,.8)"/></svg>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="term">CH PLUS · ONE TERM</div>
+    <div class="title-wrap">
+      <span class="streak"></span>
+      <h1>Beyond</h1>
+    </div>
+    <div class="sub">한텀의 기대를 적어주세요</div>
+    <p class="verse">
+      우리 안에서 역사하시는 능력을 따라<br>우리가 구하고 생각하는 모든 것보다<br>훨씬 더 넘치도록 하실 수 있는 분에게
+      <b>에베소서 3:20</b>
+    </p>
+  </section>
+
+  <section class="card">
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="name">이름</label>
+        <input id="name" name="name" type="text" maxlength="30" autocomplete="name" placeholder="이름을 적어주세요">
+      </div>
+      <div class="field">
+        <label for="text">한텀의 기대</label>
+        <p class="hint">이번 텀, 하나님께서 내 삶과 우리 공동체에 하실 일을 기대하며 적어보세요.</p>
+        <textarea id="text" name="text" maxlength="1000" placeholder="이번 텀 나는 …을 기대해요"></textarea>
+        <div class="count"><span id="count">0</span> / 1000</div>
+      </div>
+      <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">
+      <button id="submit" type="submit">기대 담기</button>
+      <div class="error" id="error"></div>
+    </form>
+
+    <div class="done" id="done">
+      <div class="check">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#163a2c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h2>기대가 담겼어요</h2>
+      <p>구하고 생각하는 것보다 더 넘치게 하실<br>하나님을 함께 기대해요.</p>
+      <div class="quote" id="quote"></div>
+      <button class="ghost" id="again" type="button">한 번 더 적기</button>
+    </div>
+  </section>
+
+  <footer>
+    <span class="logo">CHPLUS+</span>
+    <span class="tag">CHANGING <b>HEART</b><br>CHANGING <b>HISTORY</b></span>
+  </footer>
+</main>
+
+<script src="config.js"></script>
+<script>
+  var form = document.getElementById('form');
+  var nameEl = document.getElementById('name');
+  var textEl = document.getElementById('text');
+  var countEl = document.getElementById('count');
+  var btn = document.getElementById('submit');
+  var errEl = document.getElementById('error');
+  var done = document.getElementById('done');
+  var quote = document.getElementById('quote');
+
+  // 이름은 이 기기에 기억해 두기 (편의용)
+  try { nameEl.value = localStorage.getItem('chplus_name') || ''; } catch(e) {}
+
+  textEl.addEventListener('input', function(){
+    countEl.textContent = textEl.value.length;
+    textEl.style.height = 'auto';
+    textEl.style.height = Math.max(170, textEl.scrollHeight) + 'px';
+  });
+
+  function showError(msg){ errEl.textContent = msg; errEl.style.display = 'block'; }
+
+  function onSuccess(name, text){
+    try { localStorage.setItem('chplus_name', name); } catch(e) {}
+    quote.textContent = text;
+    var s = document.createElement('small'); s.textContent = '— ' + name;
+    quote.appendChild(s);
+    form.style.display = 'none';
+    done.style.display = 'block';
+    btn.disabled = false; btn.textContent = '기대 담기';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errEl.style.display = 'none';
+    var name = nameEl.value.trim(), text = textEl.value.trim();
+    if (!name){ showError('이름을 적어주세요.'); nameEl.focus(); return; }
+    if (!text){ showError('한텀의 기대를 적어주세요.'); textEl.focus(); return; }
+
+    btn.disabled = true; btn.textContent = '담는 중…';
+
+    var api = (window.CHPLUS_API || '').trim();
+    if (!api) { // 미리보기 (API 주소 미설정)
+      setTimeout(function(){ onSuccess(name, text); }, 600);
+      return;
+    }
+    function fail(msg){
+      btn.disabled = false; btn.textContent = '기대 담기';
+      showError(msg || '저장 중 문제가 생겼어요. 잠시 후 다시 시도해주세요.');
+    }
+    fetch(api, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ name: name, text: text, website: document.getElementById('website').value })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(res){ res && res.ok ? onSuccess(name, text) : fail(res && res.error); })
+    .catch(function(){ fail('인터넷 연결을 확인하고 다시 시도해주세요.'); });
+  });
+
+  document.getElementById('again').addEventListener('click', function(){
+    textEl.value = ''; countEl.textContent = '0'; textEl.style.height = '';
+    done.style.display = 'none'; form.style.display = 'block';
+  });
+</script>
+</body>
+</html>
