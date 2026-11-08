@@ -1,3 +1,2 @@
-// 앱스크립트 웹 앱 배포 후 받은 URL을 아래 따옴표 안에 넣어주세요.
-// 비워 두면 미리보기 모드로 동작합니다(시트에 저장되지 않음).
-window.CHPLUS_API = '';
+// 앱스크립트 웹 앱 URL (응답이 「CH PLUS 한텀의 기대」 시트에 저장됨)
+window.CHPLUS_API = 'https://script.google.com/macros/s/AKfycbxfwAGHSgRUeiogR5CTRiVEO3rZiA8didJvVLDGIgFNbsBKl32nWcPV89ve-j8pEgtoHw/exec';
